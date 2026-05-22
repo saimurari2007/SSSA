@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Send, FileCheck2, Truck, MessageSquare, Phone } from "lucide-react";
@@ -32,11 +32,13 @@ export default function Orders() {
 
   return (
     <section id="orders" className="py-24 md:py-36 bg-ivory relative overflow-hidden">
+      {/* Vignette depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(47,74,52,0.03)_70%,rgba(47,74,52,0.06)_100%)] pointer-events-none" />
       {/* Background glows */}
       <div className="absolute top-[20%] left-[10%] w-[38vw] h-[38vw] rounded-full bg-sage/6 filter blur-[120px] pointer-events-none" />
       <div className="absolute bottom-[20%] right-[10%] w-[38vw] h-[38vw] rounded-full bg-gold/5 filter blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }} className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Frosted glass container box */}
         <div className="bg-white/45 backdrop-blur-md rounded-[2.5rem] border border-sage/15 p-8 md:p-16 shadow-[0_12px_40px_-15px_rgba(61,90,64,0.03)] overflow-hidden relative">
@@ -51,7 +53,7 @@ export default function Orders() {
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-forest leading-[1.12]">
               Seamless Delivery Across Karnataka
             </h2>
-            <p className="font-sans text-forest/75 font-light text-xs sm:text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+            <p className="font-sans text-body/85 font-light text-xs sm:text-sm md:text-base max-w-xl mx-auto leading-relaxed">
               We stock hard-to-find classical Ayurvedic formulations and ship directly from our main depot in Ballari to all towns and districts in Karnataka.
             </p>
           </div>
@@ -66,7 +68,7 @@ export default function Orders() {
                 <h3 className="font-serif text-base sm:text-lg font-bold text-forest">
                   {step.title}
                 </h3>
-                <p className="font-sans text-xs text-forest/70 font-light leading-relaxed max-w-[260px]">
+                <p className="font-sans text-xs text-body/75 font-light leading-relaxed max-w-[260px]">
                   {step.desc}
                 </p>
               </div>
@@ -86,14 +88,16 @@ export default function Orders() {
               href="tel:+919844554437"
               className="w-full sm:w-auto flex items-center justify-center space-x-2 bg-transparent text-forest border border-forest/20 hover:bg-sage/10 transition-all duration-300 px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest"
             >
-              <Phone className="w-4 h-4 text-forest/70" />
+              <Phone className="w-4 h-4 text-body/70" />
               <span>Call +91 98445 54437</span>
             </a>
           </div>
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }
+
+

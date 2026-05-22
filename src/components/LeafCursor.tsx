@@ -88,9 +88,9 @@ export default function LeafCursor() {
       const dx = mousePos.current.x - cursorPos.current.x;
       const dy = mousePos.current.y - cursorPos.current.y;
       
-      // Interpolate position (lerp)
-      cursorPos.current.x += dx * 0.16;
-      cursorPos.current.y += dy * 0.16;
+      // Interpolate position (lerp) — faster follow for snappier feel
+      cursorPos.current.x += dx * 0.28;
+      cursorPos.current.y += dy * 0.28;
 
       const velocity = Math.sqrt(dx * dx + dy * dy);
       let targetAngle = 0;
@@ -99,11 +99,11 @@ export default function LeafCursor() {
         targetAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 45;
       }
 
-      // Smooth angle changes
+      // Smooth angle changes — faster rotation response
       let angleDiff = targetAngle - cursorAngle.current;
       while (angleDiff < -180) angleDiff += 360;
       while (angleDiff > 180) angleDiff -= 360;
-      cursorAngle.current += angleDiff * 0.15;
+      cursorAngle.current += angleDiff * 0.25;
 
       if (cursorRef.current) {
         cursorRef.current.style.transform = `translate3d(${cursorPos.current.x}px, ${cursorPos.current.y}px, 0) rotate(${cursorAngle.current}deg) scale(${isHovered ? 1.45 : 1.0})`;
@@ -150,24 +150,31 @@ export default function LeafCursor() {
         }}
       >
         <svg
-          width="26"
-          height="26"
+          width="24"
+          height="24"
           viewBox="0 0 24 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="text-forest drop-shadow-[0_2px_5px_rgba(61,90,64,0.45)]"
         >
-          {/* Luxury Leaf Silhouette */}
+          {/* Ayurvedic Tulsi Leaf Cursor */}
           <path
-            d="M2 22C4.5 17 8 13.5 13.5 11C19.5 8.2 21 3 22 2C21 3 15.8 4.5 13 10.5C10.5 16 7 19.5 2 22Z"
+            d="M12 2C8 7 3 13 2 18C4 20 8 21 12 22C16 21 20 20 22 18C21 13 16 7 12 2Z"
             fill="currentColor"
           />
-          {/* Leaf vein */}
           <path
-            d="M13 10.5C9.5 12.2 7.5 15.5 6 18"
+            d="M12 2V21"
             stroke="#F8FAF6"
-            strokeWidth="0.85"
+            strokeWidth="0.6"
             strokeLinecap="round"
+            opacity="0.35"
+          />
+          <path
+            d="M12 22V23.5"
+            stroke="currentColor"
+            strokeWidth="1"
+            strokeLinecap="round"
+            opacity="0.6"
           />
         </svg>
         {/* Soft aura glow following cursor */}

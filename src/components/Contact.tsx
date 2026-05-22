@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Clock, Send, MessageSquare, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
+import { MapPin, Phone, Clock, Send, ExternalLink } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -35,11 +36,13 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 md:py-36 bg-offwhite relative overflow-hidden">
+      {/* Vignette depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(47,74,52,0.03)_70%,rgba(47,74,52,0.06)_100%)] pointer-events-none" />
       {/* Background spotlights */}
       <div className="absolute top-[20%] right-[-10%] w-[45vw] h-[45vw] rounded-full bg-sage/8 filter blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-[-10%] w-[45vw] h-[45vw] rounded-full bg-gold/5 filter blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }} className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Section Title */}
         <div className="max-w-2xl mb-16 sm:mb-20 space-y-4">
@@ -49,7 +52,7 @@ export default function Contact() {
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-forest leading-[1.12]">
             Visit Us in Ballari or Contact Online
           </h2>
-          <p className="font-sans text-forest/75 font-light text-xs sm:text-sm md:text-base leading-relaxed">
+          <p className="font-sans text-body/85 font-light text-xs sm:text-sm md:text-base leading-relaxed">
             Have questions about specific classical preparations, oil details, or prescription availability? Reach out directly or visit our retail store.
           </p>
         </div>
@@ -70,7 +73,7 @@ export default function Contact() {
                 </div>
                 <div className="space-y-1">
                   <h4 className="font-serif font-bold text-forest text-base sm:text-lg">Our Location</h4>
-                  <p className="font-sans text-[11px] sm:text-xs text-forest/80 font-light leading-relaxed">
+                  <p className="font-sans text-[11px] sm:text-xs text-body/85 font-light leading-relaxed">
                     Sri Sai Satya Ayurvedhalaya<br />
                     Kambli Bazaar, Bangalore Road,<br />
                     Ballari, Karnataka - 583101
@@ -85,7 +88,7 @@ export default function Contact() {
                 </div>
                 <div className="space-y-1">
                   <h4 className="font-serif font-bold text-forest text-base sm:text-lg">Direct Contacts</h4>
-                  <p className="font-sans text-[11px] sm:text-xs text-forest/80 font-light leading-relaxed">
+                  <p className="font-sans text-[11px] sm:text-xs text-body/85 font-light leading-relaxed">
                     Murali Mohan: <a href="tel:+919844554437" className="hover:text-gold transition-colors font-medium">+91 98445 54437</a><br />
                     Radhika: <a href="tel:+919880276582" className="hover:text-gold transition-colors font-medium">+91 98802 76582</a>
                   </p>
@@ -106,14 +109,17 @@ export default function Contact() {
               <div className="grid grid-cols-2 gap-4 pt-2 font-sans text-xs">
                 <div className="border-r border-sage/20 pr-4 space-y-1">
                   <span className="font-semibold text-forest">Monday to Friday</span>
-                  <p className="text-forest/75 font-light">10:00 AM – 2:00 PM</p>
-                  <p className="text-forest/75 font-light">4:00 PM – 9:00 PM</p>
+                  <p className="text-body/80 font-light">10:00 AM - 2:00 PM</p>
+                  <p className="text-body/80 font-light">4:00 PM - 9:00 PM</p>
                 </div>
                 <div className="pl-2 space-y-1">
                   <span className="font-semibold text-forest">Saturday</span>
-                  <p className="text-forest/75 font-light">10:00 AM – 2:00 PM</p>
-                  <span className="font-semibold text-forest block pt-1">Sunday</span>
-                  <p className="text-forest/40 italic">Closed</p>
+                  <p className="text-body/80 font-light">10:00 AM - 2:00 PM</p>
+                  <p className="text-body/80 font-light">4:00 PM - 9:00 PM</p>
+                  <div className="border-t border-sage/20 my-2 pt-2">
+                    <span className="font-semibold text-forest">Sunday</span>
+                  </div>
+                  <p className="text-body/80 font-light">10:00 AM - 2:00 PM</p>
                 </div>
               </div>
             </div>
@@ -122,13 +128,13 @@ export default function Contact() {
             <div className="relative rounded-[2rem] overflow-hidden shadow-md border border-sage/15 h-[280px] w-full group">
               <iframe
                 title="Sri Sai Satya Ayurvedhalaya Google Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3847.6749964570085!2d76.92095627581232!3d15.148729585392096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb713915155f9a5%3A0x6b4be936bc9ebba0!2sBangalore%20Rd%2C%20Ballari%2C%20Karnataka%20583101!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3847.674!2d76.9242281!3d15.1378213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb71177113ae4cf%3A0x75d85dd1482b6ddf!2sKEVA%20STOCK%20POINT%20%5BSRI%20SAI%20SATYA%20AYURVEDALAYA%5D%20BALLARI!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
                 className="absolute inset-0 w-full h-full border-0 grayscale opacity-80 contrast-125 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 pointer-events-auto"
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-              <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-sage/20 text-[9px] font-bold uppercase tracking-wider text-forest pointer-events-none flex items-center space-x-1.5 shadow-sm">
+              <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-full border border-sage/20 text-[9px] font-bold uppercase tracking-wider                     text-body pointer-events-none flex items-center space-x-1.5 shadow-sm">
                 <span>View Google Maps</span>
                 <ExternalLink className="w-2.5 h-2.5" />
               </div>
@@ -147,7 +153,7 @@ export default function Contact() {
                 
                 {/* Name */}
                 <div className="space-y-1.5">
-                  <label htmlFor="name" className="font-sans text-[9px] uppercase tracking-widest font-bold text-forest/70">
+                  <label htmlFor="name" className="font-sans text-[9px] uppercase tracking-widest font-bold text-body/70">
                     Your Name
                   </label>
                   <input
@@ -158,13 +164,13 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Enter your name"
-                    className="w-full bg-ivory/50 border border-sage/20 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-gold focus:bg-ivory transition-colors text-forest font-light placeholder:text-forest/30"
+                    className="w-full bg-ivory/50 border border-sage/20 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-gold focus:bg-ivory transition-colors text-body font-light placeholder:text-body/40"
                   />
                 </div>
 
                 {/* Phone */}
                 <div className="space-y-1.5">
-                  <label htmlFor="phone" className="font-sans text-[9px] uppercase tracking-widest font-bold text-forest/70">
+                  <label htmlFor="phone" className="font-sans text-[9px] uppercase tracking-widest font-bold text-body/70">
                     Phone Number
                   </label>
                   <input
@@ -175,13 +181,13 @@ export default function Contact() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Enter your mobile number"
-                    className="w-full bg-ivory/50 border border-sage/20 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-gold focus:bg-ivory transition-colors text-forest font-light placeholder:text-forest/30"
+                    className="w-full bg-ivory/50 border border-sage/20 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-gold focus:bg-ivory transition-colors text-body font-light placeholder:text-body/40"
                   />
                 </div>
 
                 {/* Category Dropdown */}
                 <div className="space-y-1.5">
-                  <label htmlFor="category" className="font-sans text-[9px] uppercase tracking-widest font-bold text-forest/70">
+                  <label htmlFor="category" className="font-sans text-[9px] uppercase tracking-widest font-bold text-body/70">
                     Inquiry Category
                   </label>
                   <select
@@ -189,7 +195,7 @@ export default function Contact() {
                     name="category"
                     value={formData.category}
                     onChange={handleChange}
-                    className="w-full bg-ivory/50 border border-sage/20 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-gold focus:bg-ivory transition-colors text-forest font-light"
+                    className="w-full bg-ivory/50 border border-sage/20 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-gold focus:bg-ivory transition-colors text-body font-light"
                   >
                     <option value="General Inquiry">General Wellness Inquiry</option>
                     <option value="Herbal Medicines">Herbal Medicines Stock</option>
@@ -200,7 +206,7 @@ export default function Contact() {
 
                 {/* Message */}
                 <div className="space-y-1.5">
-                  <label htmlFor="message" className="font-sans text-[9px] uppercase tracking-widest font-bold text-forest/70">
+                  <label htmlFor="message" className="font-sans text-[9px] uppercase tracking-widest font-bold text-body/70">
                     Your Message
                   </label>
                   <textarea
@@ -211,7 +217,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Type details of your requirements or query here..."
-                    className="w-full bg-ivory/50 border border-sage/20 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-gold focus:bg-ivory transition-colors text-forest font-light placeholder:text-forest/30 resize-none"
+                    className="w-full bg-ivory/50 border border-sage/20 rounded-2xl px-4 py-3 text-xs sm:text-sm focus:outline-none focus:border-gold focus:bg-ivory transition-colors text-body font-light placeholder:text-body/40 resize-none"
                   />
                 </div>
 
@@ -231,7 +237,7 @@ export default function Contact() {
         </div>
 
         {/* Premium Minimal Footer */}
-        <div className="mt-24 pt-12 border-t border-sage/20 flex flex-col md:flex-row items-center justify-between font-sans text-xs text-forest/50">
+              <div className="mt-24 pt-12 border-t border-sage/20 flex flex-col md:flex-row items-center justify-between font-sans text-xs text-body/60">
           <div className="flex flex-col items-center md:items-start space-y-1 mb-6 md:mb-0">
             <span className="font-serif text-sm font-semibold text-forest tracking-wider select-none">
               Sri Sai Satya Ayurvedhalaya
@@ -251,11 +257,14 @@ export default function Contact() {
             ))}
           </div>
           <div className="font-light select-none text-[10px]">
-            © {new Date().getFullYear()} Sri Sai Satya Ayurvedhalaya. All rights reserved.
+            Â© {new Date().getFullYear()} Sri Sai Satya Ayurvedhalaya. All rights reserved.
           </div>
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }
+
+
+

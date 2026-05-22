@@ -1,21 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ivory: #FDFDF8;
-  --color-offwhite: #F8FAF6;
+  --color-ivory: #F3EEE3;
+  --color-offwhite: #ECE6DA;
   --color-sage: #C9DCC6;
   --color-herbal-soft: #A8CFA3;
-  --color-forest: #3D5A40;
-  --color-earth: #8B6B4A;
+  --color-forest: #2F4A34;
+  --color-earth: #8B6A43;
   --color-gold: #D9C6A5;
+  --color-body: #4F5B4E;
+  --color-nav: #3D533F;
 
   --font-serif: var(--font-cormorant), serif;
   --font-sans: var(--font-jakarta), sans-serif;
 }
 
 :root {
-  --background: #FDFDF8;
-  --foreground: #1A2E1D;
+  --background: #F3EEE3;
+  --foreground: #2F4A34;
 }
 
 body {
@@ -23,6 +25,11 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
+}
+
+/* Section divider: subtle shadow between sections */
+.section-divider {
+  box-shadow: 0 -1px 0 rgba(47, 74, 52, 0.06);
 }
 
 /* Hide default cursor on desktop for custom cursor */
@@ -37,14 +44,14 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FDFDF8;
+  background: #F3EEE3;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C9DCC6;
+  background: #A8CFA3;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A8CFA3;
+  background: #8B6A43;
 }
 
 /* Lenis smooth scrolling helper styles */
@@ -63,4 +70,3 @@ html.lenis, html.lenis body {
 .lenis-scrolling iframe {
   pointer-events: none;
 }
-

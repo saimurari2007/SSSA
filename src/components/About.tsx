@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -24,10 +24,12 @@ export default function About() {
       ref={sectionRef}
       className="relative py-24 md:py-36 bg-offwhite overflow-hidden"
     >
+      {/* Vignette depth */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(47,74,52,0.03)_70%,rgba(47,74,52,0.06)_100%)] pointer-events-none z-0" />
       {/* Soft Green Ambient Light */}
       <div className="absolute top-[30%] right-[3%] w-[40vw] h-[40vw] rounded-full bg-sage/8 filter blur-[120px] pointer-events-none z-0" />
       
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }} className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-center">
           
           {/* Left Text Block */}
@@ -43,7 +45,7 @@ export default function About() {
 
             <div className="h-[1px] w-24 bg-gold/60" />
 
-            <div className="font-sans text-forest/80 font-light leading-relaxed space-y-6 max-w-2xl text-xs sm:text-sm md:text-base">
+            <div className="font-sans text-body/85 font-light leading-relaxed space-y-6 max-w-2xl text-xs sm:text-sm md:text-base">
               <p>
                 For decades, <strong className="font-semibold text-forest">Sri Sai Satya Ayurvedhalaya</strong> has stood as a trusted destination of genuine wellness in Ballari, Karnataka. Located at Kambli Bazaar, Bangalore Road, we are dedicated to preserving the purity and therapeutic integrity of traditional Indian medicine.
               </p>
@@ -58,14 +60,14 @@ export default function About() {
             {/* Heritage Statistics Counters */}
             <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-8 border-t border-sage/20 select-none">
               {[
-                { number: "40+", label: "Years of Trust", desc: "Ballari & surrounding" },
+                { number: "5+", label: "Years of Trust", desc: "Ballari & surrounding" },
                 { number: "100%", label: "Authentic Sourcing", desc: "Direct from houses" },
                 { number: "50k+", label: "Inquiries Fulfilled", desc: "Across Karnataka" },
               ].map((stat, idx) => (
                 <div key={idx} className="space-y-1">
                   <div className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-forest">{stat.number}</div>
                   <div className="font-sans text-[9px] sm:text-[10px] font-bold text-earth uppercase tracking-widest leading-normal">{stat.label}</div>
-                  <div className="font-sans text-[9px] text-forest/50">{stat.desc}</div>
+                  <div className="font-sans text-[9px] text-body/60">{stat.desc}</div>
                 </div>
               ))}
             </div>
@@ -85,6 +87,7 @@ export default function About() {
                 src="/images/mortar_pestle.png"
                 alt="Stone mortar and pestle with fresh green leaves"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-forest/30 via-transparent to-transparent pointer-events-none" />
@@ -95,15 +98,17 @@ export default function About() {
               style={{ y: yBadge }}
               className="absolute bottom-2 -left-4 sm:-left-6 bg-white/85 backdrop-blur-md rounded-2xl border border-sage/10 shadow-lg p-5 max-w-[180px] sm:max-w-[210px] select-none"
             >
-              <p className="font-serif text-earth italic text-xs sm:text-sm">“Arogya Paramam Bhagyam”</p>
-              <p className="font-sans text-[9px] sm:text-[10px] text-forest/75 mt-2 leading-relaxed font-light">
+              <p className="font-serif text-earth italic text-xs sm:text-sm">â€œArogya Paramam Bhagyamâ€</p>
+              <p className="font-sans text-[9px] sm:text-[10px] text-body/80 mt-2 leading-relaxed font-light">
                 Health is the ultimate wealth. We source pure formulations directly from trusted houses.
               </p>
             </motion.div>
           </div>
 
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
+
+

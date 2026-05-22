@@ -50,8 +50,8 @@ export default function Navbar() {
           isVisible ? "translate-y-0" : "-translate-y-full"
         } ${
           isScrolled
-            ? "bg-ivory/75 backdrop-blur-md border-b border-sage/20 py-3 shadow-[0_4px_30px_rgba(61,90,64,0.03)]"
-            : "bg-transparent py-5"
+            ? "bg-ivory/90 backdrop-blur-md border-b border-sage/20 py-3 shadow-[0_4px_30px_rgba(47,74,52,0.06)]"
+            : "bg-gradient-to-b from-ivory/60 to-transparent py-5"
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -81,7 +81,7 @@ export default function Navbar() {
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
-                className="font-sans text-xs uppercase tracking-widest text-forest/70 hover:text-forest transition-colors duration-300 relative py-1 group"
+                className="font-sans text-xs uppercase tracking-widest text-nav/80 hover:text-nav transition-colors duration-300 relative py-1 group"
               >
                 {item.label}
                 <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-herbal-soft transition-all duration-300 group-hover:w-full" />
@@ -141,7 +141,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex flex-col space-y-4">
-          <div className="text-[10px] text-forest/40 uppercase tracking-widest">
+          <div className="text-[10px] text-nav/50 uppercase tracking-widest">
             Ballari, Karnataka
           </div>
           <a

@@ -11,6 +11,7 @@ import Orders from "@/components/Orders";
 import Contact from "@/components/Contact";
 import LeafParticles from "@/components/LeafParticles";
 import LeafCursor from "@/components/LeafCursor";
+import AmbientSilhouettes from "@/components/AmbientSilhouettes";
 
 export default function Home() {
   useEffect(() => {
@@ -39,6 +40,9 @@ export default function Home() {
 
   return (
     <>
+      {/* Ambient Background Layers */}
+      <AmbientSilhouettes />
+
       {/* Custom Cursor & Canvas Particles */}
       <LeafCursor />
       <LeafParticles />
